@@ -1,0 +1,492 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Capture Moments - About Us</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background-color: #f9f9f9;
+            color: #5d0e0e;
+            line-height: 1.6;
+        }
+
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1.5rem 5%;
+            background-color: white;
+            box-shadow: 0 2px 10px rgba(45, 10, 10, 0.1);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .logo {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: #2c3e50;
+            text-decoration: none;
+            letter-spacing: 1px;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+        }
+
+        .nav-link {
+            text-decoration: none;
+            color: #2c3e50;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+
+        .nav-link:hover {
+            color: #e74c3c;
+        }
+
+        .about-hero {
+            height: 50vh;
+            background: linear-gradient(135deg, #3585ba, #430c59);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            text-align: center;
+            padding: 0 2rem;
+        }
+
+        .about-hero h1 {
+            font-size: 3.5rem;
+            margin-bottom: 1rem;
+            font-weight: 700;
+            max-width: 800px;
+        }
+
+        .about-content {
+            padding: 5rem 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .mission-section {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            margin-bottom: 5rem;
+            align-items: center;
+        }
+
+        .mission-text h2 {
+            color: #2c3e50;
+            font-size: 2.5rem;
+            margin-bottom: 1.5rem;
+            position: relative;
+        }
+
+        .mission-text h2::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 0;
+            width: 80px;
+            height: 4px;
+            background: #e74c3c;
+            border-radius: 2px;
+        }
+
+        .mission-points {
+            display: grid;
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .mission-point {
+            display: flex;
+            gap: 1.5rem;
+            align-items: flex-start;
+            background: white;
+            padding: 1.5rem;
+            border-radius: 8px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            transition: transform 0.3s ease;
+        }
+
+        .mission-point:hover {
+            transform: translateY(-5px);
+        }
+
+        .mission-icon {
+            color: #e74c3c;
+            font-size: 1.8rem;
+            min-width: 40px;
+            text-align: center;
+        }
+
+        .mission-image {
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 15px 30px rgba(0,0,0,0.1);
+        }
+
+        .mission-image img {
+            width: 100%;
+            height: auto;
+            display: block;
+            transition: transform 0.5s ease;
+        }
+
+        .mission-image:hover img {
+            transform: scale(1.03);
+        }
+
+        .team-section {
+            margin: 6rem 0;
+        }
+
+        .team-section h2 {
+            text-align: center;
+            font-size: 2.5rem;
+            margin-bottom: 3rem;
+            color: #2c3e50;
+            position: relative;
+        }
+
+        .team-section h2::after {
+            content: '';
+            position: absolute;
+            bottom: -15px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 4px;
+            background: #e74c3c;
+            border-radius: 2px;
+        }
+
+        .team-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 3rem;
+            margin-top: 4rem;
+        }
+
+        .team-member {
+            text-align: center;
+            padding: 2rem;
+            border-radius: 10px;
+            transition: all 0.3s ease;
+            background: white;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+        }
+
+        .team-member:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0,0,0,0.1);
+        }
+
+        .member-photo {
+            width: 180px;
+            height: 180px;
+            border-radius: 50%;
+            object-fit: cover;
+            margin: 0 auto 1.5rem;
+            border: 5px solid #f1f1f1;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+
+        .team-member h3 {
+            color: #2c3e50;
+            margin-bottom: 0.5rem;
+            font-size: 1.4rem;
+        }
+
+        .team-member p {
+            color: #7f8c8d;
+            font-size: 0.95rem;
+        }
+
+        .team-member p:last-child {
+            margin-top: 0.5rem;
+            font-style: italic;
+            color: #95a5a6;
+        }
+
+        .testimonial-section {
+            background: linear-gradient(135deg, #2c3e50, #34495e);
+            padding: 5rem 2rem;
+            margin-top: 5rem;
+            color: white;
+        }
+
+        .testimonial-section h2 {
+            text-align: center;
+            font-size: 2.5rem;
+            margin-bottom: 4rem;
+            position: relative;
+        }
+
+        .testimonial-section h2::after {
+            content: '';
+            position: absolute;
+            bottom: -15px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 4px;
+            background: #e74c3c;
+            border-radius: 2px;
+        }
+
+        .testimonial-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .testimonial-card {
+            background: rgba(255,255,255,0.1);
+            padding: 2rem;
+            border-radius: 10px;
+            border-left: 4px solid #e74c3c;
+            backdrop-filter: blur(10px);
+            transition: transform 0.3s ease;
+        }
+
+        .testimonial-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .testimonial-text {
+            font-style: italic;
+            margin-bottom: 1.5rem;
+            color: #ecf0f1;
+            line-height: 1.8;
+        }
+
+        .testimonial-author {
+            color: #e74c3c;
+            font-weight: 600;
+            font-size: 1.1rem;
+        }
+
+        footer {
+            background: #2c3e50;
+            color: white;
+            padding: 3rem 2rem;
+            margin-top: auto;
+        }
+
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 3rem;
+        }
+
+        .footer-column h3 {
+            font-size: 1.3rem;
+            margin-bottom: 1.5rem;
+            position: relative;
+            padding-bottom: 10px;
+        }
+
+        .footer-column h3::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 50px;
+            height: 3px;
+            background: #e74c3c;
+        }
+
+        .footer-links {
+            list-style: none;
+        }
+
+        .footer-links li {
+            margin-bottom: 0.8rem;
+        }
+
+        .footer-links a {
+            color: #ecf0f1;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        .footer-links a:hover {
+            color: #e74c3c;
+        }
+
+        .copyright {
+            text-align: center;
+            padding-top: 3rem;
+            margin-top: 3rem;
+            border-top: 1px solid rgba(196, 26, 26, 0.588);
+        }
+
+        @media (max-width: 768px) {
+            .mission-section {
+                grid-template-columns: 1fr;
+            }
+            
+            .about-hero h1 {
+                font-size: 2.5rem;
+            }
+
+            .navbar {
+                flex-direction: column;
+                gap: 1.5rem;
+                padding: 1.5rem;
+            }
+
+            .nav-links {
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .about-hero h1 {
+                font-size: 2rem;
+            }
+
+            .mission-text h2, .team-section h2, .testimonial-section h2 {
+                font-size: 2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar">
+        <a href="#" class="logo">CAPTURE MOMENTS</a>
+        <div class="nav-links">
+            <a href="about.html" class="nav-link">About</a>
+            <a href="services.html" class="nav-link">Services</a>
+            <a href="photographers.html" class="nav-link">Find Photographers</a>
+            <a href="contact.html" class="nav-link">Contact</a>
+        </div>
+    </nav>
+
+    <section class="about-hero">
+        <div>
+            <h1>A picture is forever</h1>
+            <p style="font-size: 1.2rem; max-width: 700px; margin: 0 auto;">Professional photography services dedicated to capturing your most precious moments with artistry and passion.</p>
+        </div>
+    </section>
+
+    <div class="about-content">
+        <section class="mission-section">
+            <div class="mission-text">
+                <h2>Our Mission</h2>
+                <p style="margin-bottom: 2rem; color: #4f1d1d;">We connect clients with exceptional photographers to create timeless memories through authentic, high-quality imagery.</p>
+                <div class="mission-points">
+                    <div class="mission-point">
+                        <div class="mission-icon">📷</div>
+                        <div>
+                            <h3>Professional Excellence</h3>
+                            <p>Vetted photographers with proven expertise and top-tier equipment for every occasion.</p>
+                        </div>
+                    </div>
+                    <div class="mission-point">
+                        <div class="mission-icon">❤️</div>
+                        <div>
+                            <h3>Personalized Service</h3>
+                            <p>Tailored photography experiences that reflect your unique style and vision.</p>
+                        </div>
+                    </div>
+                    <div class="mission-point">
+                        <div class="mission-icon">🏆</div>
+                        <div>
+                            <h3>Seamless Booking</h3>
+                            <p>Easy online scheduling with transparent pricing and reliable support.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="mission-image">
+                <img src="statics/teamwork.jpg" alt="Our photography team in action">
+            </div>
+        </section>
+
+        <section class="team-section">
+            <h2>Meet Our Photographers</h2>
+            <p style="text-align: center; max-width: 700px; margin: 0 auto 2rem; color: #0a3032;">Our network includes award-winning professionals specializing in various photography styles.</p>
+            <div class="team-grid">
+                <div class="team-member">
+                    <img src="statics/images/jackdoe.jpg" alt="Jack Doe" class="member-photo">
+                    <h3>Jack Doe</h3>
+                    <p>Wedding & Event Specialist</p>
+                    <p>Capturing love stories since 2012</p>
+                </div>
+                <div class="team-member">
+                    <img src="statics/images/alena.jpg" alt="Alena" class="member-photo">
+                    <h3>Alena</h3>
+                    <p>Portrait & Fashion</p>
+                    <p>Studio and outdoor expertise</p>
+                </div>
+                <div class="team-member">
+                    <img src="statics/images/james.jpg" alt="James Thompson" class="member-photo">
+                    <h3>James Thompson</h3>
+                    <p>Commercial & Editorial</p>
+                    <p>Product and architecture specialist</p>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <!-- <section class="testimonial-section">
+        <h2>Client Testimonials</h2>
+        <div class="testimonial-grid">
+            {% for testimonial in testimonials %}
+            <div class="testimonial-card">
+                <p class="testimonial-text">"{{ testimonial[1] }}"</p>
+                <p class="testimonial-author">– {{ testimonial[0] }}</p>
+            </div>
+            {% endfor %}
+        </div>
+    </section> -->
+
+    <footer>
+        <div class="footer-content">
+            <div class="footer-column">
+                <h3>CaptureMoments</h3>
+                <p>Professional photography services dedicated to capturing your most precious moments with artistry and passion.</p>
+            </div>
+            <div class="footer-column">
+                <h3>Quick Links</h3>
+                <ul class="footer-links">
+                    <li><a href="{{ url_for('home') }}">Home</a></li>
+                    <li><a href="{{ url_for('about') }}">About Us</a></li>
+                    <li><a href="{{ url_for('services') }}">Services</a></li>
+                    <li><a href="{{ url_for('photographers') }}">Photographers</a></li>
+                </ul>
+            </div>
+            <div class="footer-column">
+                <h3>Contact Us</h3>
+                <ul class="footer-links">
+                    <li>Email: info@capturemoments.com</li>
+                    <li>Phone: (123) 456-7890</li>
+                    <li>Address: 123 Photo Lane, Imagery City</li>
+                </ul>
+            </div>
+        </div>
+        <div class="copyright">
+            <p>&copy; 2023 CaptureMoments. All rights reserved.</p>
+        </div>
+    </footer>
+</body>
+</html>

@@ -1,0 +1,586 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CaptureMoments - Our Photographers</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background-color: #f9f9f9;
+            color: #333;
+            line-height: 1.6;
+        }
+
+        /* Navbar Styles */
+        .navbar {
+            background: rgba(255, 255, 255, 0.98);
+            padding: 1.5rem 5%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 15px rgba(0,0,0,0.1);
+        }
+
+        .logo {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: #2c3e50;
+            text-decoration: none;
+            letter-spacing: 1px;
+        }
+
+        .logo span {
+            color: #e74c3c;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+        }
+
+        .nav-link {
+            color: #2c3e50;
+            text-decoration: none;
+            font-weight: 500;
+            transition: all 0.3s;
+            padding: 0.5rem 1rem;
+            border-radius: 4px;
+        }
+
+        .nav-link:hover {
+            color: #e74c3c;
+            background: rgba(231, 76, 60, 0.1);
+        }
+
+        /* Photographers Hero */
+        .photographers-hero {
+            height: 50vh;
+            background: linear-gradient(135deg, #3498db, #9b59b6);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: white;
+            padding: 0 2rem;
+            margin-top: 80px;
+        }
+
+        .photographers-hero-content h1 {
+            font-size: 3.5rem;
+            margin-bottom: 1rem;
+            font-weight: 700;
+        }
+
+        .photographers-hero-content p {
+            font-size: 1.2rem;
+            max-width: 700px;
+            margin: 0 auto;
+            opacity: 0.9;
+        }
+
+        /* Filter Section */
+        .filter-section {
+            background: white;
+            padding: 2rem 5%;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            margin-bottom: 2rem;
+        }
+
+        .filter-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1.5rem;
+            align-items: center;
+        }
+
+        .filter-group {
+            display: flex;
+            flex-direction: column;
+            min-width: 200px;
+        }
+
+        .filter-label {
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+            color: #2c3e50;
+        }
+
+        .filter-select {
+            padding: 0.8rem;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            background: white;
+            font-size: 1rem;
+        }
+
+        .filter-button {
+            padding: 0.8rem 1.8rem;
+            background: #e74c3c;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-weight: 600;
+            transition: all 0.3s;
+        }
+
+        .filter-button:hover {
+            background: #c0392b;
+        }
+
+        /* Photographers Grid */
+        .photographers-section {
+            padding: 5rem 5%;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 2.5rem;
+            margin-bottom: 3rem;
+            color: #2c3e50;
+            position: relative;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -15px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 4px;
+            background: #e74c3c;
+            border-radius: 2px;
+        }
+
+        .photographers-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 3rem;
+        }
+
+        .photographer-card {
+            background: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            transition: all 0.3s ease;
+        }
+
+        .photographer-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0,0,0,0.1);
+        }
+
+        .photographer-img-container {
+            height: 300px;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .photographer-img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+
+        .photographer-card:hover .photographer-img {
+            transform: scale(1.05);
+        }
+
+        .photographer-badge {
+            position: absolute;
+            top: 1rem;
+            right: 1rem;
+            background: #e74c3c;
+            color: white;
+            padding: 0.3rem 0.8rem;
+            border-radius: 50px;
+            font-size: 0.9rem;
+            font-weight: 600;
+        }
+
+        .photographer-content {
+            padding: 1.5rem;
+        }
+
+        .photographer-name {
+            font-size: 1.5rem;
+            margin-bottom: 0.5rem;
+            color: #2c3e50;
+        }
+
+        .photographer-specialization {
+            color: #e74c3c;
+            font-weight: 600;
+            margin-bottom: 0.8rem;
+            display: block;
+        }
+
+        .photographer-info {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 1.5rem;
+        }
+
+        .photographer-rating {
+            color: #f39c12;
+            font-weight: 600;
+        }
+
+        .photographer-experience {
+            color: #7f8c8d;
+        }
+
+        .photographer-bio {
+            color: #555;
+            line-height: 1.6;
+        }
+
+        /* Footer */
+        footer {
+            background: #2c3e50;
+            color: white;
+            padding: 3rem 5%;
+            margin-top: 5rem;
+        }
+
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 3rem;
+        }
+
+        .footer-column h3 {
+            font-size: 1.3rem;
+            margin-bottom: 1.5rem;
+            position: relative;
+            padding-bottom: 10px;
+        }
+
+        .footer-column h3::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 50px;
+            height: 3px;
+            background: #e74c3c;
+        }
+
+        .footer-links {
+            list-style: none;
+        }
+
+        .footer-links li {
+            margin-bottom: 0.8rem;
+        }
+
+        .footer-links a {
+            color: #ecf0f1;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        .footer-links a:hover {
+            color: #e74c3c;
+        }
+
+        .copyright {
+            text-align: center;
+            padding-top: 3rem;
+            margin-top: 3rem;
+            border-top: 1px solid rgba(255,255,255,0.1);
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .navbar {
+                flex-direction: column;
+                padding: 1rem;
+            }
+            
+            .nav-links {
+                margin-top: 1rem;
+                gap: 1rem;
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+            
+            .photographers-hero-content h1 {
+                font-size: 2.5rem;
+            }
+            
+            .filter-container {
+                flex-direction: column;
+                align-items: stretch;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .photographers-hero-content h1 {
+                font-size: 2rem;
+            }
+            
+            .section-title {
+                font-size: 2rem;
+            }
+            
+            .photographer-img-container {
+                height: 250px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation Bar -->
+    <nav class="navbar">
+        <a href="#" class="logo">CAPTURE<span>MOMENTS</span></a>
+        <div class="nav-links">
+            <a href="{{ url_for('home') }}" class="nav-link">Home</a>
+            <a href="{{ url_for('about') }}" class="nav-link">About</a>
+            <a href="{{ url_for('services') }}" class="nav-link">Services</a>
+            <a href="{{ url_for('photographers') }}" class="nav-link">Find Photographers</a>
+            <a href="{{ url_for('contact') }}" class="nav-link">Contact</a>
+        </div>
+    </nav>
+
+    <!-- Photographers Hero -->
+    <section class="photographers-hero">
+        <div class="photographers-hero-content">
+            <h1>Meet Our Photographers</h1>
+            <p>Browse our talented team of professional photographers and find the perfect match for your needs.</p>
+        </div>
+    </section>
+
+    <!-- Filter Section -->
+    <!-- <section class="filter-section">
+        <div class="filter-container">
+            <div class="filter-group">
+                <label for="specialization" class="filter-label">Specialization</label>
+                <select id="specialization" class="filter-select">
+                    <option value="">All Specializations</option>
+                    <option value="wedding">Wedding</option>
+                    <option value="portrait">Portrait</option>
+                    <option value="commercial">Commercial</option>
+                    <option value="event">Event</option>
+                    <option value="real-estate">Real Estate</option>
+                </select>
+            </div>
+            <div class="filter-group">
+                <label for="experience" class="filter-label">Experience Level</label>
+                <select id="experience" class="filter-select">
+                    <option value="">Any Experience</option>
+                    <option value="5">5+ Years</option>
+                    <option value="3">3+ Years</option>
+                    <option value="1">1+ Years</option>
+                </select>
+            </div>
+            <div class="filter-group">
+                <label for="rating" class="filter-label">Minimum Rating</label>
+                <select id="rating" class="filter-select">
+                    <option value="">Any Rating</option>
+                    <option value="5">5 Stars</option>
+                    <option value="4">4+ Stars</option>
+                    <option value="3">3+ Stars</option>
+                </select>
+            </div>
+            <button class="filter-button">Filter Photographers</button>
+        </div>
+    </section> -->
+
+    <!-- Photographers Grid -->
+    <section class="photographers-section">
+        <h2 class="section-title">Featured Photographers</h2>
+        <div class="photographers-grid">
+            <!-- Photographer 1 -->
+            <div class="photographer-card">
+                <div class="photographer-img-container">
+                    <img src="statics/images/jackdoe.jpg" 
+                         class="photographer-img" 
+                         alt="Sarah Johnson">
+                    <span class="photographer-badge">Featured</span>
+                </div>
+                <div class="photographer-content">
+                    <h3 class="photographer-name">Jack Doe</h3>
+                    <span class="photographer-specialization">Wedding Photography</span>
+                    <div class="photographer-info">
+                        <span class="photographer-rating">★ 4.9/5</span>
+                        <span class="photographer-experience">8 years experience</span>
+                    </div>
+                    <p class="photographer-bio">Specializing in capturing the most precious moments of your special day with a romantic and elegant style. Sarah has photographed over 200 weddings worldwide.</p>
+                </div>
+            </div>
+
+            <!-- Photographer 2 -->
+            <div class="photographer-card">
+                <div class="photographer-img-container">
+                    <img src="statics/images/alena.jpg" 
+                         class="photographer-img" 
+                         alt="Michael Chen">
+                </div>
+                <div class="photographer-content">
+                    <h3 class="photographer-name">Alena</h3>
+                    <span class="photographer-specialization">Portrait Photography</span>
+                    <div class="photographer-info">
+                        <span class="photographer-rating">★ 4.8/5</span>
+                        <span class="photographer-experience">6 years experience</span>
+                    </div>
+                    <p class="photographer-bio">Expert in creating stunning individual and family portraits that capture personality and emotion. Michael's studio work is renowned for its perfect lighting.</p>
+                </div>
+            </div>
+
+            <!-- Photographer 3 -->
+            <div class="photographer-card">
+                <div class="photographer-img-container">
+                    <img src="statics/images/margaret.jpg" 
+                         class="photographer-img" 
+                         alt="Emma Wilson">
+                    <span class="photographer-badge">Featured</span>
+                </div>
+                <div class="photographer-content">
+                    <h3 class="photographer-name">Margaret</h3>
+                    <span class="photographer-specialization">Commercial Photography</span>
+                    <div class="photographer-info">
+                        <span class="photographer-rating">★ 4.7/5</span>
+                        <span class="photographer-experience">7 years experience</span>
+                    </div>
+                    <p class="photographer-bio">Professional product and architectural photography to elevate your brand's visual identity. Emma has worked with Fortune 500 companies and luxury brands.</p>
+                </div>
+            </div>
+
+            <!-- Photographer 4 -->
+            <div class="photographer-card">
+                <div class="photographer-img-container">
+                    <img src="statics/surya.jpg" 
+                         class="photographer-img" 
+                         alt="David Rodriguez">
+                </div>
+                <div class="photographer-content">
+                    <h3 class="photographer-name">Surya</h3>
+                    <span class="photographer-specialization">Event Photography</span>
+                    <div class="photographer-info">
+                        <span class="photographer-rating">★ 4.6/5</span>
+                        <span class="photographer-experience">5 years experience</span>
+                    </div>
+                    <p class="photographer-bio">Specializing in corporate events and celebrations, capturing the energy and essence of every occasion. David is our most requested event photographer.</p>
+                </div>
+            </div>
+
+            <!-- Photographer 5 -->
+            <div class="photographer-card">
+                <div class="photographer-img-container">
+                    <img src="statics/sunder.jpg" 
+                         class="photographer-img" 
+                         alt="Lisa Park">
+                </div>
+                <div class="photographer-content">
+                    <h3 class="photographer-name">Sunder</h3>
+                    <span class="photographer-specialization">Fashion Photography</span>
+                    <div class="photographer-info">
+                        <span class="photographer-rating">★ 4.9/5</span>
+                        <span class="photographer-experience">9 years experience</span>
+                    </div>
+                    <p class="photographer-bio">Creating high-end fashion imagery with a distinctive editorial style for brands and magazines. Lisa's work has been featured in Vogue and Harper's Bazaar.</p>
+                </div>
+            </div>
+
+            <!-- Photographer 6 -->
+            <div class="photographer-card">
+                <div class="photographer-img-container">
+                    <img src="statics/images/james.jpg" 
+                         class="photographer-img" 
+                         alt="James Thompson">
+                </div>
+                <div class="photographer-content">
+                    <h3 class="photographer-name">James Thompson</h3>
+                    <span class="photographer-specialization">Real Estate Photography</span>
+                    <div class="photographer-info">
+                        <span class="photographer-rating">★ 4.5/5</span>
+                        <span class="photographer-experience">4 years experience</span>
+                    </div>
+                    <p class="photographer-bio">Professional property photography showcasing homes and commercial spaces in their best light. James offers drone photography and virtual tours.</p>
+                </div>
+            </div>
+
+            <!-- Photographer 7 -->
+            <div class="photographer-card">
+                <div class="photographer-img-container">
+                    <img src="statics/suhana.jpg" 
+                         class="photographer-img" 
+                         alt="Olivia Martin">
+                    <span class="photographer-badge">Featured</span>
+                </div>
+                <div class="photographer-content">
+                    <h3 class="photographer-name">Suhana</h3>
+                    <span class="photographer-specialization">Newborn & Maternity</span>
+                    <div class="photographer-info">
+                        <span class="photographer-rating">★ 4.9/5</span>
+                        <span class="photographer-experience">5 years experience</span>
+                    </div>
+                    <p class="photographer-bio">Specializing in capturing the beauty of pregnancy and the first precious moments with your newborn. Olivia creates timeless, heartwarming portraits.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-content">
+            <div class="footer-column">
+                <h3>CaptureMoments</h3>
+                <p>Professional photography services dedicated to capturing your most precious moments with artistry and passion.</p>
+            </div>
+            <div class="footer-column">
+                <h3>Quick Links</h3>
+                <ul class="footer-links">
+                    <li><a href="{{ url_for('home') }}">Home</a></li>
+                    <li><a href="{{ url_for('about') }}">About Us</a></li>
+                    <li><a href="{{ url_for('services') }}">Services</a></li>
+                    <li><a href="{{ url_for('photographers') }}">Photographers</a></li>
+                </ul>
+            </div>
+            <div class="footer-column">
+                <h3>Contact Us</h3>
+                <ul class="footer-links">
+                    <li>Email: info@capturemoments.com</li>
+                    <li>Phone: (123) 456-7890</li>
+                    <li>Address: 123 Photo Lane, Imagery City</li>
+                </ul>
+            </div>
+        </div>
+        <div class="copyright">
+            <p>&copy; 2023 CaptureMoments. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script>
+        // Simple filter functionality (would be enhanced with actual filtering in production)
+        document.querySelector('.filter-button').addEventListener('click', function() {
+            const specialization = document.getElementById('specialization').value;
+            const experience = document.getElementById('experience').value;
+            const rating = document.getElementById('rating').value;
+            
+            // In a real implementation, this would filter the photographers
+            alert(`Filtering by: ${specialization || 'All'} specializations, ${experience || 'Any'} years experience, ${rating || 'Any'} star rating`);
+        });
+    </script>
+</body>
+</html>

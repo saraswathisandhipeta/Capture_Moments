@@ -1,0 +1,688 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CaptureMoments - Our Services</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background-color: #f9f9f9;
+            color: #333;
+            line-height: 1.6;
+        }
+
+        /* Navbar Styles */
+        .navbar {
+            background: rgba(255, 255, 255, 0.98);
+            padding: 1.5rem 5%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 15px rgba(0,0,0,0.1);
+        }
+
+        .logo {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: #2c3e50;
+            text-decoration: none;
+            letter-spacing: 1px;
+        }
+
+        .logo span {
+            color: #e74c3c;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+        }
+
+        .nav-link {
+            color: #2c3e50;
+            text-decoration: none;
+            font-weight: 500;
+            transition: all 0.3s;
+            padding: 0.5rem 1rem;
+            border-radius: 4px;
+        }
+
+        .nav-link:hover {
+            color: #e74c3c;
+            background: rgba(231, 76, 60, 0.1);
+        }
+
+        /* Services Hero */
+        .services-hero {
+            height: 50vh;
+            background: linear-gradient(135deg, #3498db, #9b59b6);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: white;
+            padding: 0 2rem;
+        }
+
+        .services-hero-content h1 {
+            font-size: 3.5rem;
+            margin-bottom: 1rem;
+            font-weight: 700;
+        }
+
+        .services-hero-content p {
+            font-size: 1.2rem;
+            max-width: 700px;
+            margin: 0 auto;
+            opacity: 0.9;
+        }
+
+        /* Services Grid */
+        .services-section {
+            padding: 5rem 5%;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 2.5rem;
+            margin-bottom: 3rem;
+            color: #2c3e50;
+            position: relative;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -15px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 4px;
+            background: #e74c3c;
+            border-radius: 2px;
+        }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 3rem;
+        }
+
+        .service-card {
+            background: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            transition: all 0.3s ease;
+        }
+
+        .service-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0,0,0,0.1);
+        }
+
+        .service-image {
+            height: 250px;
+            overflow: hidden;
+        }
+
+        .service-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+
+        .service-card:hover .service-image img {
+            transform: scale(1.05);
+        }
+
+        .service-content {
+            padding: 2rem;
+        }
+
+        .service-title {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            color: #2c3e50;
+        }
+
+        .service-price {
+            font-size: 1.3rem;
+            color: #e74c3c;
+            font-weight: 600;
+            margin-bottom: 1rem;
+        }
+
+        .service-description {
+            color: #7f8c8d;
+            margin-bottom: 1.5rem;
+        }
+
+        .service-features {
+            margin-bottom: 2rem;
+        }
+
+        .service-features li {
+            list-style: none;
+            margin-bottom: 0.5rem;
+            position: relative;
+            padding-left: 1.5rem;
+            color: #555;
+        }
+
+        .service-features li::before {
+            content: '✓';
+            position: absolute;
+            left: 0;
+            color: #2ecc71;
+            font-weight: bold;
+        }
+
+        .service-button {
+            display: inline-block;
+            padding: 0.8rem 1.8rem;
+            background: #e74c3c;
+            color: white;
+            text-decoration: none;
+            border-radius: 50px;
+            font-weight: 500;
+            transition: all 0.3s ease;
+        }
+
+        .service-button:hover {
+            background: #c0392b;
+            transform: translateY(-2px);
+        }
+
+        /* Pricing Comparison */
+        .pricing-comparison {
+            background: #f1f1f1;
+            padding: 5rem 5%;
+            margin-top: 3rem;
+        }
+
+        .comparison-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 2rem;
+            background: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+        }
+
+        .comparison-table th, 
+        .comparison-table td {
+            padding: 1.2rem;
+            text-align: left;
+            border-bottom: 1px solid #eee;
+        }
+
+        .comparison-table th {
+            background: #2c3e50;
+            color: white;
+            font-weight: 500;
+        }
+
+        .comparison-table tr:nth-child(even) {
+            background: #f9f9f9;
+        }
+
+        .comparison-table tr:last-child td {
+            border-bottom: none;
+        }
+
+        .highlight {
+            background: rgba(46, 204, 113, 0.1) !important;
+            font-weight: 500;
+        }
+
+        /* FAQ Section */
+        .faq-section {
+            padding: 5rem 5%;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        .faq-item {
+            margin-bottom: 1.5rem;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.05);
+        }
+
+        .faq-question {
+            background: white;
+            padding: 1.5rem;
+            font-weight: 600;
+            color: #2c3e50;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .faq-answer {
+            background: #f9f9f9;
+            padding: 0 1.5rem;
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease, padding 0.3s ease;
+        }
+
+        .faq-item.active .faq-answer {
+            max-height: 500px;
+            padding: 1.5rem;
+        }
+
+        /* Footer */
+        footer {
+            background: #2c3e50;
+            color: white;
+            padding: 3rem 5%;
+            margin-top: 5rem;
+        }
+
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 3rem;
+        }
+
+        .footer-column h3 {
+            font-size: 1.3rem;
+            margin-bottom: 1.5rem;
+            position: relative;
+            padding-bottom: 10px;
+        }
+
+        .footer-column h3::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 50px;
+            height: 3px;
+            background: #e74c3c;
+        }
+
+        .footer-links {
+            list-style: none;
+        }
+
+        .footer-links li {
+            margin-bottom: 0.8rem;
+        }
+
+        .footer-links a {
+            color: #ecf0f1;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        .footer-links a:hover {
+            color: #e74c3c;
+        }
+
+        .copyright {
+            text-align: center;
+            padding-top: 3rem;
+            margin-top: 3rem;
+            border-top: 1px solid rgba(255,255,255,0.1);
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .navbar {
+                flex-direction: column;
+                padding: 1rem;
+            }
+            
+            .nav-links {
+                margin-top: 1rem;
+                gap: 1rem;
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+            
+            .services-hero-content h1 {
+                font-size: 2.5rem;
+            }
+            
+            .services-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .section-title {
+                font-size: 2rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .services-hero-content h1 {
+                font-size: 2rem;
+            }
+            
+            .service-image {
+                height: 200px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation Bar -->
+    <nav class="navbar">
+        <a href="#" class="logo">CAPTURE<span>MOMENTS</span></a>
+        <div class="nav-links">
+            <a href="{{ url_for('home') }}" class="nav-link">Home</a>
+            <a href="{{ url_for('about') }}" class="nav-link">About</a>
+            <a href="{{ url_for('services') }}" class="nav-link">Services</a>
+            <a href="{{ url_for('photographers') }}" class="nav-link">Find Photographers</a>
+            <a href="{{ url_for('contact') }}" class="nav-link">Contact</a>
+        </div>
+    </nav>
+
+    <!-- Services Hero -->
+    <section class="services-hero">
+        <div class="services-hero-content">
+            <h1>Our Photography Services</h1>
+            <p>Professional photography experiences tailored to your needs. Browse our comprehensive service offerings below.</p>
+        </div>
+    </section>
+
+    <!-- Main Services Grid -->
+    <section class="services-section">
+        <h2 class="section-title">Service Packages</h2>
+        <div class="services-grid">
+            <!-- Wedding Photography -->
+            <div class="service-card">
+                <div class="service-image">
+                    <img src="statics/wedding.jpg" alt="Wedding Photography">
+                </div>
+                <div class="service-content">
+                    <h3 class="service-title">Wedding Photography</h3>
+                    <p class="service-price">Starting at $1,200</p>
+                    <p class="service-description">Capture every magical moment of your special day with our experienced wedding photographers.</p>
+                    <ul class="service-features">
+                        <li>Full-day coverage (8-10 hours)</li>
+                        <li>2 professional photographers</li>
+                        <li>500+ edited high-res images</li>
+                        <li>Online gallery with download</li>
+                        <li>Engagement session included</li>
+                    </ul>
+                    <a href="{{ url_for('booking') }}?service=wedding" class="service-button">Book Now</a>
+                </div>
+            </div>
+
+            <!-- Portrait Photography -->
+            <div class="service-card">
+                <div class="service-image">
+                    <img src="statics/images/potrait.jpg" alt="Portrait Photography">
+                </div>
+                <div class="service-content">
+                    <h3 class="service-title">Portrait Sessions</h3>
+                    <p class="service-price">Starting at $250</p>
+                    <p class="service-description">Professional portraits for individuals, couples, families, and graduates.</p>
+                    <ul class="service-features">
+                        <li>1-2 hour session</li>
+                        <li>1 professional photographer</li>
+                        <li>50+ edited high-res images</li>
+                        <li>Choice of location</li>
+                        <li>Multiple outfit changes</li>
+                    </ul>
+                    <a href="{{ url_for('booking') }}?service=portrait" class="service-button">Book Now</a>
+                </div>
+            </div>
+
+            <!-- Commercial Photography -->
+            <div class="service-card">
+                <div class="service-image">
+                    <img src="statics/images/commercial.jpg" alt="Commercial Photography">
+                </div>
+                <div class="service-content">
+                    <h3 class="service-title">Commercial Photography</h3>
+                    <p class="service-price">Starting at $500</p>
+                    <p class="service-description">High-quality images for your business, products, or marketing materials.</p>
+                    <ul class="service-features">
+                        <li>Half-day or full-day sessions</li>
+                        <li>Studio or on-location</li>
+                        <li>Professional lighting setup</li>
+                        <li>100+ edited high-res images</li>
+                        <li>Fast turnaround</li>
+                    </ul>
+                    <a href="{{ url_for('booking') }}?service=commercial" class="service-button">Book Now</a>
+                </div>
+            </div>
+
+            <!-- Event Photography -->
+            <div class="service-card">
+                <div class="service-image">
+                    <img src="/statics/images/event.jpg" alt="Event Photography">
+                </div>
+                <div class="service-content">
+                    <h3 class="service-title">Event Photography</h3>
+                    <p class="service-price">Starting at $400</p>
+                    <p class="service-description">Professional coverage for corporate events, parties, and special occasions.</p>
+                    <ul class="service-features">
+                        <li>2-6 hour coverage</li>
+                        <li>1-2 photographers</li>
+                        <li>200+ edited high-res images</li>
+                        <li>Candid and posed shots</li>
+                        <li>Quick digital delivery</li>
+                    </ul>
+                    <a href="{{ url_for('booking') }}?service=event" class="service-button">Book Now</a>
+                </div>
+            </div>
+
+            <!-- Real Estate Photography -->
+            <div class="service-card">
+                <div class="service-image">
+                    <img src="statics/real estate.jpg" alt="Real Estate Photography">
+                </div>
+                <div class="service-content">
+                    <h3 class="service-title">Real Estate Photography</h3>
+                    <p class="service-price">Starting at $300</p>
+                    <p class="service-description">Showcase properties in their best light with professional real estate photography.</p>
+                    <ul class="service-features">
+                        <li>Interior and exterior shots</li>
+                        <li>HDR imaging</li>
+                        <li>Virtual tour options</li>
+                        <li>24-hour turnaround</li>
+                        <li>Drone photography available</li>
+                    </ul>
+                    <a href="{{ url_for('booking') }}?service=realestate" class="service-button">Book Now</a>
+                </div>
+            </div>
+
+            <!-- Custom Package -->
+            <div class="service-card">
+                <div class="service-image">
+                    <img src="statics/images/custom.jpg" alt="Custom Photography Package">
+                </div>
+                <div class="service-content">
+                    <h3 class="service-title">Custom Package</h3>
+                    <p class="service-price">Contact for quote</p>
+                    <p class="service-description">Need something special? Build your own custom photography package.</p>
+                    <ul class="service-features">
+                        <li>Tailored to your specific needs</li>
+                        <li>Flexible duration and services</li>
+                        <li>Specialized equipment available</li>
+                        <li>Multiple locations</li>
+                        <li>Personal consultation</li>
+                    </ul>
+                    <a href="{{ url_for('contact') }}" class="service-button">Contact Us</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Pricing Comparison -->
+    <section class="pricing-comparison">
+        <div class="services-section">
+            <h2 class="section-title">Service Comparison</h2>
+            <table class="comparison-table">
+                <thead>
+                    <tr>
+                        <th>Service</th>
+                        <th>Duration</th>
+                        <th>Photographers</th>
+                        <th>Images</th>
+                        <th>Starting Price</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Wedding</td>
+                        <td>8-10 hours</td>
+                        <td>2</td>
+                        <td>500+</td>
+                        <td>$1,200</td>
+                    </tr>
+                    <tr class="highlight">
+                        <td>Portrait</td>
+                        <td>1-2 hours</td>
+                        <td>1</td>
+                        <td>50+</td>
+                        <td>$250</td>
+                    </tr>
+                    <tr>
+                        <td>Commercial</td>
+                        <td>4-8 hours</td>
+                        <td>1</td>
+                        <td>100+</td>
+                        <td>$500</td>
+                    </tr>
+                    <tr class="highlight">
+                        <td>Event</td>
+                        <td>2-6 hours</td>
+                        <td>1-2</td>
+                        <td>200+</td>
+                        <td>$400</td>
+                    </tr>
+                    <tr>
+                        <td>Real Estate</td>
+                        <td>1-3 hours</td>
+                        <td>1</td>
+                        <td>30+</td>
+                        <td>$300</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </section>
+
+    <!-- FAQ Section -->
+    <section class="faq-section">
+        <h2 class="section-title">Frequently Asked Questions</h2>
+        
+        <div class="faq-item">
+            <div class="faq-question">
+                <span>How do I book a photography session?</span>
+                <span>+</span>
+            </div>
+            <div class="faq-answer">
+                <p>You can book directly through our website by selecting your preferred service and photographer, or contact us for a custom quote. We require a 25% deposit to secure your booking.</p>
+            </div>
+        </div>
+        
+        <div class="faq-item">
+            <div class="faq-question">
+                <span>What's included in the service price?</span>
+                <span>+</span>
+            </div>
+            <div class="faq-answer">
+                <p>All our packages include the photographer's time, professional editing of images, and digital delivery via an online gallery. Additional costs may apply for prints, albums, or special requests.</p>
+            </div>
+        </div>
+        
+        <div class="faq-item">
+            <div class="faq-question">
+                <span>How long until I receive my photos?</span>
+                <span>+</span>
+            </div>
+            <div class="faq-answer">
+                <p>Standard delivery time is 2-3 weeks for most sessions. Wedding photography may take 4-6 weeks due to the volume of images. Rush processing is available for an additional fee.</p>
+            </div>
+        </div>
+        
+        <div class="faq-item">
+            <div class="faq-question">
+                <span>Can I request a specific photographer?</span>
+                <span>+</span>
+            </div>
+            <div class="faq-answer">
+                <p>Absolutely! When booking, you can browse our photographer profiles and select your preferred professional based on their portfolio and specialty.</p>
+            </div>
+        </div>
+        
+        <div class="faq-item">
+            <div class="faq-question">
+                <span>What is your cancellation policy?</span>
+                <span>+</span>
+            </div>
+            <div class="faq-answer">
+                <p>We understand plans change. Cancellations made more than 14 days before the session receive a full refund of the deposit. Within 14 days, the deposit is non-refundable but can be applied to a future session within 6 months.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-content">
+            <div class="footer-column">
+                <h3>CaptureMoments</h3>
+                <p>Professional photography services dedicated to capturing your most precious moments with artistry and passion.</p>
+            </div>
+            <div class="footer-column">
+                <h3>Quick Links</h3>
+                <ul class="footer-links">
+                    <li><a href="{{ url_for('home') }}">Home</a></li>
+                    <li><a href="{{ url_for('about') }}">About Us</a></li>
+                    <li><a href="{{ url_for('services') }}">Services</a></li>
+                    <li><a href="{{ url_for('photographers') }}">Photographers</a></li>
+                </ul>
+            </div>
+            <div class="footer-column">
+                <h3>Contact Us</h3>
+                <ul class="footer-links">
+                    <li>Email: info@capturemoments.com</li>
+                    <li>Phone: (123) 456-7890</li>
+                    <li>Address: 123 Photo Lane, Imagery City</li>
+                </ul>
+            </div>
+        </div>
+        <div class="copyright">
+            <p>&copy; 2023 CaptureMoments. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script>
+        // FAQ toggle functionality
+        document.querySelectorAll('.faq-question').forEach(question => {
+            question.addEventListener('click', () => {
+                const item = question.parentNode;
+                item.classList.toggle('active');
+                
+                // Toggle the +/- icon
+                const icon = question.querySelector('span:last-child');
+                icon.textContent = item.classList.contains('active') ? '−' : '+';
+            });
+        });
+    </script>
+</body>
+</html>

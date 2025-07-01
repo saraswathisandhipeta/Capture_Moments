@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Photographer Booking</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Arial', sans-serif;
+        }
+        
+        body {
+            background: linear-gradient(rgba(78, 4, 4, 0.3), rgba(80, 5, 5, 0.3)), url('../static/images/indexbackground.jpg') no-repeat center center fixed;
+            background-size: cover;
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .navbar {
+            padding: 20px 50px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: rgba(0, 0, 0, 0.4);
+        }
+        
+        .nav-brand {
+            font-size: 24px;
+            color: white;
+            font-weight: bold;
+            text-decoration: none;
+        }
+        
+        .nav-buttons {
+            display: flex;
+            gap: 30px;
+        }
+        
+        .btn {
+            padding: 12px 25px;
+            border: none;
+            border-radius: 25px;
+            font-size: 16px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            display: inline-block;
+        }
+        
+        .book-photographer {
+            background-color: #2ecc71;
+            color: white;
+            border: 2px solid #27ae60;
+        }
+        
+        .book-photographer:hover {
+            background-color: #27ae60;
+            transform: scale(1.05);
+        }
+        
+        .hero {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: flex-end;
+            color: white;
+            padding: 0 100px;
+            margin-top: 5%;
+            text-align: right;
+        }
+        
+        .hero-content {
+            max-width: 600px;
+            backdrop-filter: blur(5px);
+            padding: 30px;
+            border-radius: 15px;
+        }
+        
+        .hero h1 {
+            font-size: 3.5em;
+            margin-bottom: 20px;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
+        }
+        
+        .hero p {
+            font-size: 1.2em;
+            margin-bottom: 40px;
+            line-height: 1.6;
+            text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.7);
+        }
+        
+        .cta-btn {
+            padding: 15px 40px;
+            font-size: 1.2em;
+            background-color: #e67d22e5;
+            color: rgb(68, 7, 7);
+            border: none;
+            border-radius: 30px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            display: inline-block;
+            box-shadow: 0 4px 15px rgba(230, 126, 34, 0.4);
+        }
+        
+        .cta-btn:hover {
+            background-color: #d35400e1;
+            transform: scale(1.05);
+        }
+
+  
+        
+        @media (max-width: 768px) {
+            .navbar {
+                padding: 15px 20px;
+            }
+            
+            .hero {
+                padding: 0 30px;
+                align-items: center;
+                text-align: center;
+            }
+            
+            .hero h1 {
+                font-size: 2.5em;
+            }
+            
+            .hero p {
+                font-size: 1em;
+            }
+            
+            .nav-buttons {
+                gap: 15px;
+            }
+            
+            .btn {
+                padding: 10px 20px;
+                font-size: 14px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="navbar">
+        <a href="#" class="nav-brand">Capture Moments</a>
+        <!-- <div class="nav-buttons">
+            <a href="{{ url_for('login') }}" class="btn book-photographer">Book Photographer</a>
+        </div> -->
+    </div>
+    
+    <div class="hero">
+        <div class="hero-content">
+            <h1>Capture Your Perfect Moments</h1>
+            <p>Connect with professional photographers for your special events, portraits, or any memorable occasion.</p>
+            <a href="{{ url_for('login') }}" class="cta-btn">Get Started Now</a>
+        </div>
+    </div>
+</body>
+</html>
