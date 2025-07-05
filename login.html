@@ -13,7 +13,7 @@
         }
 
         body {
-            background: #f8f9fa;
+            background: url(background.jpg) no-repeat center center fixed;
             min-height: 100vh;
             display: flex;
             justify-content: center;
@@ -21,7 +21,7 @@
         }
 
         .auth-container {
-            background: white;
+            background: rgb(201, 176, 176);
             padding: 2.5rem;
             border-radius: 1rem;
             box-shadow: 0 10px 40px rgba(0,0,0,0.1);
@@ -37,7 +37,7 @@
 
         .logo {
             font-size: 2rem;
-            color: #2ecc71; /* Primary green color */
+            color: #831313; /* Primary green color */
             font-weight: 700;
             margin-bottom: 0.5rem;
         }
@@ -70,7 +70,7 @@
         .auth-btn {
             width: 100%;
             padding: 0.875rem;
-            background: #e67e22; /* Orange accent */
+            background: #bc7477; /* Orange accent */
             color: white;
             border: none;
             border-radius: 0.5rem;
@@ -81,7 +81,7 @@
         }
 
         .auth-btn:hover {
-            background: #d35400; /* Darker orange */
+            background: #633c3c; /* Darker orange */
             transform: translateY(-2px);
             box-shadow: 0 5px 15px rgba(230, 126, 34, 0.3);
         }
@@ -93,7 +93,7 @@
         }
 
         .auth-link {
-            color: #2ecc71; /* Primary green color */
+            color: #6b2637; /* Primary green color */
             text-decoration: none;
             font-weight: 500;
         }
@@ -148,8 +148,8 @@
         </form>
 
         <div class="auth-footer">
-            <p>New user? <a href="{{ url_for('signup') }}" class="auth-link">Create account</a></p>
+            <p>New user? <a href="signup.html" class="auth-link">Create account</a></p>
         </div>
     </div>
 </body>
-</html>
+</html>  
