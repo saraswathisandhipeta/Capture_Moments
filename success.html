@@ -34,13 +34,13 @@
         .logo {
             font-size: 1.8rem;
             font-weight: 700;
-            color: #2c3e50;
+            color: #ed8282;
             text-decoration: none;
             letter-spacing: 1px;
         }
 
         .logo span {
-            color: #e74c3c;
+            color: #50120b;
         }
 
         /* Success Content */
@@ -76,7 +76,7 @@
         .home-btn {
             display: inline-block;
             padding: 1rem 2rem;
-            background: #e74c3c;
+            background: #e6857a;
             color: white;
             text-decoration: none;
             border-radius: 5px;
@@ -86,7 +86,7 @@
         }
 
         .home-btn:hover {
-            background: #c0392b;
+            background: #5b130b;
             transform: translateY(-2px);
         }
 
@@ -107,7 +107,7 @@
 <body>
     <!-- Navigation Bar -->
     <nav class="navbar">
-        <a href="{{ url_for('home') }}" class="logo">CAPTURE<span>MOMENTS</span></a>
+        <a href="{{ url_for('home') }}" class="logo">Capture<span>Moments</span></a>
     </nav>
 
     <!-- Success Content -->
@@ -117,7 +117,7 @@
         <p class="success-message">Your photography session has been successfully booked.</p>
         <p>We've sent a confirmation email to your registered email address. Our team will contact you shortly to discuss further details.</p>
         
-        <a href="{{ url_for('home') }}" class="home-btn">Back to Home</a>
+        <a href="index.html" class="home-btn">Back to Home</a>
     </div>
 
     <!-- Footer -->
