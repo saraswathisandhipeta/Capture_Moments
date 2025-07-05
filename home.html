@@ -13,7 +13,7 @@
         }
         
         body {
-            background: linear-gradient(rgba(78, 4, 4, 0.3), rgba(80, 5, 5, 0.3)), url('../static/images/indexbackground.jpg') no-repeat center center fixed;
+            background: url(background.jpg) no-repeat center center fixed; 
             background-size: cover;
             height: 100vh;
             display: flex;
@@ -30,7 +30,7 @@
         
         .nav-brand {
             font-size: 24px;
-            color: white;
+            color: rgb(250, 248, 248);
             font-weight: bold;
             text-decoration: none;
         }
@@ -69,7 +69,7 @@
             flex-direction: column;
             justify-content: center;
             align-items: flex-end;
-            color: white;
+            color: rgb(81, 61, 61);
             padding: 0 100px;
             margin-top: 5%;
             text-align: right;
@@ -98,7 +98,7 @@
         .cta-btn {
             padding: 15px 40px;
             font-size: 1.2em;
-            background-color: #e67d22e5;
+            background-color: #c58387e5;
             color: rgb(68, 7, 7);
             border: none;
             border-radius: 30px;
@@ -106,11 +106,11 @@
             transition: all 0.3s ease;
             text-decoration: none;
             display: inline-block;
-            box-shadow: 0 4px 15px rgba(230, 126, 34, 0.4);
+            box-shadow: 0 4px 15px rgba(189, 88, 106, 0.4);
         }
         
         .cta-btn:hover {
-            background-color: #d35400e1;
+            background-color: #904258;
             transform: scale(1.05);
         }
 
@@ -158,7 +158,7 @@
         <div class="hero-content">
             <h1>Capture Your Perfect Moments</h1>
             <p>Connect with professional photographers for your special events, portraits, or any memorable occasion.</p>
-            <a href="{{ url_for('login') }}" class="cta-btn">Get Started Now</a>
+            <a href="login.html" class="cta-btn">Get Started Now</a>
         </div>
     </div>
 </body>
